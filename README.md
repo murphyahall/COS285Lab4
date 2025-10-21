@@ -1,2 +1,5 @@
 # COS285Lab4
-Callen c
+
+## Team Members
+Callen C.
+Murphy H.
