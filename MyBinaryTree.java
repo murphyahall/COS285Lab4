@@ -1,5 +1,3 @@
-package lab4;
-
 import java.util.*;
 
 /**Creates a MyBinaryTree object that stores unsorted nodes in a binary tree.
@@ -57,5 +55,51 @@ public class MyBinaryTree<E extends Comparable<E>> {
         for (E element : elements) {
             insert(element);
         }
+    }
+
+    /** executes a breadth first search and then prints each value when its accessed
+     */
+    public void bfsPrintSearch() {
+    	if (root == null) {
+    		return;
+    	}
+    	Queue<Node<E>> q = new ArrayDeque<Node<E>>();
+    	q.add(root);
+    	while (!q.isEmpty()) {
+    		Node<E> node = q.remove();
+    		System.out.print(node.data + " ");
+    		if (node.left != null) {
+    			q.add(node.left);
+    		}
+    		if (node.right != null) {
+    			q.add(node.right);
+    		}
+    	}
+    	System.out.println();
+    }
+    
+    /** finds a target value in the binary tree
+     * @param x - the value we are searching for
+     * @return boolean of if the value is found.
+     */
+    public boolean search(E x) {
+    	return searchHelper(root, x);
+    }
+    
+    /** Recursive helper for search.
+     * @param node - the current node we are checking
+     * @param x - the value we are searching for
+     * @return boolean of if the value is found.
+     */
+    private boolean searchHelper(Node<E> node, E x) {
+    	if (node == null) {
+    		return false;
+    	} if (node.data.compareTo(x) == 0) {
+    		return true;
+    	} else if (node.data.compareTo(x) > 0) {
+    		return searchHelper(node.left, x);
+    	} else {
+    		return searchHelper(node.right, x);
+    	}
     }
 }
