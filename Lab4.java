@@ -1,10 +1,8 @@
-package lab4;
-
 import java.util.*;
 import java.io.*;
 
 /**Demonstrate the binary tree and its methods
- * @author Abby Pitcairn
+ *@author Abby Pitcairn
  * @version October 18, 2025
  */
 public class Lab4 {
@@ -12,8 +10,7 @@ public class Lab4 {
     /**Main method to run Lab 4. 
      * @param args - not applicable.
      */
-    public static void main(String[] args) {
-        
+    public static void main(String[] args) {      
         // Create list of Integers from data file.
         List<Integer> data = loadNumbersFromFile(args[0]);
 
@@ -22,7 +19,13 @@ public class Lab4 {
         
         // Add the data to the tree.
         tree.buildTree(data);
-
+        
+        //prints nodes in order
+        tree.bfsPrintSearch();
+        
+        //searches tree for data
+        System.out.println(tree.search(12));
+        System.out.println(tree.search(3));
     }
 
     /**Create a List of Integers from a given filepath with data
